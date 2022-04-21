@@ -98,12 +98,10 @@ public class Ventana extends JFrame {
         //Inicio del código para el área de trabajo
         scrollContenedorPagina = new JScrollPane();
         contenedorPagina = new JPanel();
-        contenedorPagina.setLayout(new BorderLayout(20, 20));
+        contenedorPagina.setLayout(new BorderLayout());
         contenedorPagina.setBorder(new EmptyBorder(20, 40, 20, 40));
         pagina = new JTextArea();
         pagina.setLineWrap(true);
-        //pagina.setBorder(new EmptyBorder(20, 40, 20, 40));
-        //add(pagina, BorderLayout.CENTER);
         contenedorPagina.add(pagina, BorderLayout.CENTER);
         scrollContenedorPagina.setViewportView(contenedorPagina);
         add(scrollContenedorPagina, BorderLayout.CENTER);
