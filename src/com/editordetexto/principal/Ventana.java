@@ -22,12 +22,17 @@ public class Ventana extends JFrame {
 
     //Atributos para la barra de herramientas
     private JTabbedPane contenedorHerramientas;
-    private JPanel tabTexto, tabImagen, tabPagina, tabVista;
+    private TabTexto tabTexto;
 
     //Atributos para el área de trabajo
     private JScrollPane scrollContenedorPagina;
     private JPanel contenedorPagina;
     private JTextArea pagina;
+
+    //Atributos de la barra inferior
+    private JPanel barraInferior;
+    private JPanel barraInferiorContenedorPalabras;
+    private JLabel barraInferiorPalabras, barraInferiorPalabrasTotal, barraInferiorRenglon;
 
     public static void main(String[] args) {
         Ventana ventana = new Ventana();
@@ -39,7 +44,7 @@ public class Ventana extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         inicializarIU();
-
+        pack();
         setVisible(true);
     }
 
@@ -83,14 +88,8 @@ public class Ventana extends JFrame {
 
         //Inicio del código de la barra de herramientas
         contenedorHerramientas = new JTabbedPane();
-        tabTexto = new JPanel();
-        tabImagen = new JPanel();
-        tabPagina = new JPanel();
-        tabVista = new JPanel();
+        tabTexto = new TabTexto();
         contenedorHerramientas.add("Texto", tabTexto);
-        contenedorHerramientas.add("Imagen", tabImagen);
-        contenedorHerramientas.add("Página", tabPagina);
-        contenedorHerramientas.add("Vista", tabVista);
 
         add(contenedorHerramientas, BorderLayout.NORTH);
         //Fin del código de la barra de herramientas
@@ -107,6 +106,19 @@ public class Ventana extends JFrame {
         add(scrollContenedorPagina, BorderLayout.CENTER);
         //Fin del código para el área de trabajo
 
+        //Inicio del código para la barra inferior
+        barraInferior = new JPanel();
+        barraInferior.setLayout(new BorderLayout());
+        barraInferiorContenedorPalabras = new JPanel();
+        barraInferiorPalabras = new JLabel("Palabras: ");
+        barraInferiorPalabrasTotal = new JLabel("Palabras en total: ");
+        barraInferiorRenglon = new JLabel(("Renglón actual: "));
+        barraInferiorContenedorPalabras.add(barraInferiorPalabras);
+        barraInferiorContenedorPalabras.add(barraInferiorPalabrasTotal);
+        barraInferior.add(barraInferiorContenedorPalabras, BorderLayout.WEST);
+        barraInferior.add(barraInferiorRenglon, BorderLayout.EAST);
+        add(barraInferior, BorderLayout.SOUTH);
+        //Fin del código para la barra inferior
     }
 
 }
